@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ParseQ</title>
+	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app/assets/css/main.css">
+</head>
+<body ng-app="parseQ">
+	<div ng-controller="MainController">
+		<div class="jumbotron">
+			<h1>{{headline}}</h1>
+			<label>Ask A Question</label>
+			<input placeholder="question">
+			<button>Enter Queue</button>
+		</div>
+    	<div class="main-container">
+      		<h1> DevMountain Chat Room </h1>
+      		<input class="form-control text-box" type="text" ng-model="question" placeholder="Message">
+      		<button ng-click="postData()">Add</button>
+      		<div class="messages-container">
+        		<p ng-repeat="message in questions"> {{message.text}} </p>
+      		</div>
+    	</div>		
+	</div>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="app/js/app.js"></script>	
+	<script src="app/js/defaultHeaders.js"></script>
+	<script src="app/js/controllers/MainController.js"></script>
+	<script src="app/js/services/parseService.js"></script>
+
+</body>
+</html>
