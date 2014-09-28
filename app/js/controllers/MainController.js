@@ -4,7 +4,7 @@ app.controller('MainController', function($scope, parseService) {
 
 	$scope.getParseData = function() {
 		parseService.getData().then(function(questions) {
-			$scope.questions = questions.data;
+			$scope.questions = questions.data.results;
 			console.log($scope.questions)
 
 		})
@@ -19,5 +19,8 @@ app.controller('MainController', function($scope, parseService) {
 		$scope.question = '';
 	};
 
-	setInterval($scope.getParseData, 1000);
+	$scope.changeStatus = function() {
+		$scope.question.status = 'green'
+	}
+
 });

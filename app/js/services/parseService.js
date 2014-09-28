@@ -7,7 +7,7 @@ app.service('parseService', function($http, $q) {
 		var url = 'https://api.parse.com/1/classes/question';
 		$http({
 			method: 'POST',
-			data: {text: question},
+			data: {text: question, status: 'red'},
 			url: url
 		}).then(function(data) {
 			deferred.resolve(data);
@@ -18,7 +18,7 @@ app.service('parseService', function($http, $q) {
 
 	this.getData = function() {
 		var deferred = $q.defer();
-		var url = 'https://api.parse.com/1/classes/question?order=-createdAt';
+		var url = 'https://api.parse.com/1/classes/question';
 		return $http({
 			method: 'GET',
 			url: url

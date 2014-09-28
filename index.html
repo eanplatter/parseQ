@@ -10,15 +10,13 @@
 		<div class="jumbotron">
 			<h1>{{headline}}</h1>
 			<label>Ask A Question</label>
-			<input placeholder="question">
-			<button>Enter Queue</button>
+      		<input class="form-control text-box" type="text" ng-model="question" placeholder="Message">			
+      		<button ng-click="postData()">Enter Queue</button>
 		</div>
     	<div class="main-container">
-      		<h1> DevMountain Chat Room </h1>
-      		<input class="form-control text-box" type="text" ng-model="question" placeholder="Message">
-      		<button ng-click="postData()">Add</button>
-      		<div class="messages-container">
-        		<p ng-repeat="message in questions"> {{message.text}} </p>
+      		<div class="messages-container" ng-repeat="question in questions">
+        		<p > {{quesiton.text}}, {{question.status}} </p>
+        		<button ng-click="changeStatus()">Change Status</button>
       		</div>
     	</div>		
 	</div>
