@@ -13,12 +13,18 @@
       		<input class="form-control text-box" type="text" ng-model="question" placeholder="Message">			
       		<button ng-click="postData()">Enter Queue</button>
 		</div>
-    	<div class="main-container">
-      		<div class="messages-container" ng-repeat="question in questions">
-        		<p > {{quesiton.text}}, {{question.status}} </p>
-        		<button ng-click="changeStatus()">Change Status</button>
+    	<div class="main-container col-md-4">
+      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'red'}">
+        		<p> {{question.text}}, {{question.status}} </p>
+        		<button ng-click="statusYellow(question)">Change Status</button>
       		</div>
-    	</div>		
+    	</div>	
+    	<div class="main-container col-md-4">
+      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'yellow'}">
+        		<p> {{question.text}}, {{question.status}} </p>
+        		<button ng-click="statusGreen(question)">Change Status</button>
+      		</div>
+    	</div>    		
 	</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>

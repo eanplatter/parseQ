@@ -19,8 +19,12 @@ app.controller('MainController', function($scope, parseService) {
 		$scope.question = '';
 	};
 
-	$scope.changeStatus = function() {
-		$scope.question.status = 'green'
+	$scope.statusGreen = function(question) {
+		question.status = 'green'
 	}
+
+	$scope.statusYellow = function(question) {
+		question.status = 'yellow'
+	}	
 
 });
