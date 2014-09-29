@@ -7,7 +7,7 @@ app.controller('MainController', function($scope, parseService) {
 			$scope.questions = questions.data.results;
 			console.log($scope.questions)
 		})
-	};
+	}; 
 
 	$scope.postData = function() {
 		debugger;
@@ -18,12 +18,17 @@ app.controller('MainController', function($scope, parseService) {
 		$scope.question = '';
 	};
 
-	$scope.statusGreen = function(question) {
-		question.status = 'green'
+	$scope.deleteQuestion = function(question) {
+		parseService.deleteData(question.objectId).then(function(data) {
+			$scope.getParseData();
+		})
 	}
 
 	$scope.statusYellow = function(question) {
 		question.status = 'yellow'
+		parseService.editData(question.objectId, 'yellow').then(function(data) {
+			$scope.getParseData();
+		})
 	}	
 
 });

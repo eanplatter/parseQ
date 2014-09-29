@@ -1,30 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="parseQ">
 <head>
 	<title>ParseQ</title>
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app/assets/css/lumen.css">	
 	<link rel="stylesheet" type="text/css" href="app/assets/css/main.css">
 </head>
-<body ng-app="parseQ">
-	<div ng-controller="MainController">
-		<div class="jumbotron">
-			<h1>{{headline}}</h1>
-			<label>Ask A Question</label>
-      		<input class="form-control text-box" type="text" ng-model="question" placeholder="Message">			
-      		<button ng-click="postData()">Enter Queue</button>
+<body ng-controller="MainController">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Parse Queue</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" ng-model="question"  class="form-control" placeholder="Question">
+        </div>
+        <button ng-click="postData()" class="btn btn-info">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>	
+	<div  class="container">
+		<div class="col-md-6">
+	    	<div class=" panel-primary panel">
+	    		<div class="panel-heading">
+	    			In Queue
+	    		</div>
+	    		<div class="panel-body">
+		      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'red'}">
+		        		<p> {{question.text}}, {{question.status}} </p>
+		        		<button ng-click="statusYellow(question)">Assist Student</button>
+		      		</div>
+	    		</div>
+	    	</div>	
 		</div>
-    	<div class="main-container col-md-4">
-      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'red'}">
-        		<p> {{question.text}}, {{question.status}} </p>
-        		<button ng-click="statusYellow(question)">Change Status</button>
-      		</div>
-    	</div>	
-    	<div class="main-container col-md-4">
-      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'yellow'}">
-        		<p> {{question.text}}, {{question.status}} </p>
-        		<button ng-click="statusGreen(question)">Change Status</button>
-      		</div>
-    	</div>    		
+
+	<div  class="container">
+		<div class="col-md-6">
+	    	<div class=" panel-success panel">
+	    		<div class="panel-heading">
+	    			In Queue
+	    		</div>
+	    		<div class="panel-body">
+		      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'yellow'}">
+		        		<p> {{question.text}}, {{question.status}} </p>
+		        		<button ng-click="deleteQuestion(question)">Close Question</button>
+		    		</div> 
+	    		</div>
+	    	</div>	
+		</div>		
+
+   		
 	</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
