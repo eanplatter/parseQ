@@ -6,7 +6,6 @@ app.controller('MainController', function($scope, parseService) {
 		parseService.getData().then(function(questions) {
 			$scope.questions = questions.data.results;
 			console.log($scope.questions)
-
 		})
 	};
 

@@ -2,12 +2,12 @@ var app = angular.module('parseQ');
 
 app.service('parseService', function($http, $q) {
 
-	this.postData = function(question) {
+	this.postData = function(question, status) {
 		var deferred = $q.defer();
 		var url = 'https://api.parse.com/1/classes/question';
 		$http({
 			method: 'POST',
-			data: {text: question, status: 'red'},
+			data: {text: question, status: status},
 			url: url
 		}).then(function(data) {
 			deferred.resolve(data);
