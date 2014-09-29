@@ -41,14 +41,14 @@
 	    		</div>
 	    		<div class="panel-body">
 		      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'red'}">
-		        		<p> {{question.text}}, {{question.status}} </p>
-		        		<button ng-click="statusYellow(question)">Assist Student</button>
+		        		<p> {{question.text}}</p>
+		        		<button class="btn btn-warning btn-block" ng-click="statusYellow(question)">Assist Student</button>
+		        		<hr>
 		      		</div>
 	    		</div>
 	    	</div>	
 		</div>
 
-	<div  class="container">
 		<div class="col-md-6">
 	    	<div class=" panel-success panel">
 	    		<div class="panel-heading">
@@ -56,8 +56,9 @@
 	    		</div>
 	    		<div class="panel-body">
 		      		<div class="messages-container" ng-repeat="question in questions | filter:{status:'yellow'}">
-		        		<p> {{question.text}}, {{question.status}} </p>
-		        		<button ng-click="deleteQuestion(question)">Close Question</button>
+		        		<p> {{question.text}}</p>
+		        		<button class="btn btn-danger btn-block" ng-click="deleteQuestion(question)">Close Question</button>
+		        		<hr>
 		    		</div> 
 	    		</div>
 	    	</div>	
